@@ -6,3 +6,17 @@ before_install:
   - "docker build -t darahumadac/reactapp -f ./docker/reactapp/client/Dockerfile.dev ./docker/reactapp/client"
 script: 
   - "docker run -e CI=true darahumadac/reactapp npm run test -- --coverage"
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-512142648189"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
