@@ -7,6 +7,9 @@ before_install:
 script: 
   - "docker run -e CI=true darahumadac/reactapp npm run test -- --coverage"
 
+before_deploy:
+  - "cd reactapp/client"
+
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
