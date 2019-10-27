@@ -7,7 +7,9 @@ COPY . .
 RUN npm run build
 
 # Run phase
+# expose port for elastic beanstalk 
 FROM nginx
+EXPOSE 80
 COPY --from=build-phase /app/build /usr/share/nginx/html
 
 
