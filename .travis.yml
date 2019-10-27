@@ -8,7 +8,7 @@ script:
   - "docker run -e CI=true darahumadac/reactapp npm run test -- --coverage"
 
 before_deploy:
-  - "cd reactapp/client"
+  - "cd ./docker/reactapp/client"
 
 deploy:
   provider: elasticbeanstalk
