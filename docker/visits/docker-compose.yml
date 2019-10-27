@@ -1,0 +1,8 @@
+version: '3' #docker compose version. use docker-compose for running multi-container apps
+services: # multiple containers. by defining the services in this file docker-compose will automatically create the containers in the same network so they can communicate
+  redis-server: #container name
+    image: 'redis' #create container using image
+  node-app: #container name
+    build: . #create container using Dockerfile
+    ports:
+      - "4001:8081"
