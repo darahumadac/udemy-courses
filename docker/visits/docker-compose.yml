@@ -3,6 +3,7 @@ services: # multiple containers. by defining the services in this file docker-co
   redis-server: #container name
     image: 'redis' #create container using image
   node-app: #container name
+    restart: always #restart policy
     build: . #create container using Dockerfile
     ports:
       - "4001:8081"
